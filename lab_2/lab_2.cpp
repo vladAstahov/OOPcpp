@@ -24,17 +24,57 @@ void printWithMaxSpeed(Flight *flights);
 void printFlights(Flight *flights);
 void getDistanceFromMoscow(Flight *flights);
 void printWithMaxSpeed(Flight *flights);
+void menu(Flight *flights);
 
 int N;
 Flight *flights;
 
 int main()
 {
+    ofstream outfile;
+    outfile.open("text.txt");
+
+    cout << "input elements count \n";
+    cin >> N;
+
+    outfile << N << endl;
+
+    for (int i = 0; i < N; i++)
+    {
+        Flight newFlight;
+
+        cout << "input number";
+        cin >> newFlight.number;
+        cout << "input airline";
+        cin >> newFlight.airline;
+        cout << "input from";
+        cin >> newFlight.from;
+        cout << "input to";
+        cin >> newFlight.to;
+        cout << "input distance";
+        cin >> newFlight.distance;
+        cout << "input duration";
+        cin >> newFlight.duration;
+        cout << "input aircraft";
+        cin >> newFlight.aircraft;
+        cout << "input passangers";
+        cin >> newFlight.passangers;
+
+        outfile << newFlight.number << endl;
+        outfile << newFlight.airline << endl;
+        outfile << newFlight.from << endl;
+        outfile << newFlight.to << endl;
+        outfile << newFlight.distance << endl;
+        outfile << newFlight.duration << endl;
+        outfile << newFlight.aircraft << endl;
+        outfile << newFlight.passangers << endl;
+    }
+    outfile.close();
+
     ifstream infile;
     infile.open("text.txt");
 
     infile >> N;
-    infile.get();
 
     flights = new Flight[N];
 
@@ -45,27 +85,57 @@ int main()
 
     infile.close();
 
-    printFlights(flights);
-    printWithMaxSpeed(flights);
-    getDistanceFromMoscow(flights);
+    menu(flights);
 
     return 0;
+}
+
+void enterFilghts()
+{
+}
+
+void menu(Flight *flights)
+{
+    while (1 == 1)
+    {
+        int command;
+        cout << "enter 1 to print all flights \n"
+             << "enter 2 to print aircraft with max speed \n"
+             << "enter 3 to get total distance from Moscow"
+             << endl;
+        cin >> command;
+
+        if (command == 1)
+        {
+            printFlights(flights);
+        }
+        else if (command == 2)
+        {
+            printWithMaxSpeed(flights);
+        }
+        else if (command == 3)
+        {
+            getDistanceFromMoscow(flights);
+        }
+        else
+        {
+            cout << "incorrect command";
+        }
+    }
 }
 
 Flight readFlight(ifstream &file)
 {
     Flight flight;
 
-    getline(file, flight.number);
-    getline(file, flight.airline);
-    getline(file, flight.from);
-    getline(file, flight.to);
+    file >> flight.number;
+    file >> flight.airline;
+    file >> flight.from;
+    file >> flight.to;
     file >> flight.distance;
     file >> flight.duration;
-    file.get();
-    getline(file, flight.aircraft);
+    file >> flight.aircraft;
     file >> flight.passangers;
-    file.get();
 
     return flight;
 }
