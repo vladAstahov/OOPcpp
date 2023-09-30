@@ -1,0 +1,17 @@
+2
+number1
+airline1
+Moscow
+Volgograd
+3000
+1
+maximumSpeed
+30
+number2
+airline2
+Volgograd
+Moscow
+1000
+1
+aircraft2
+30
