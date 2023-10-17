@@ -10,24 +10,28 @@ using namespace std;
 class flight
 {
 private:
-    double distance;
+    double duration;
     string number;
     string airline;
     string from;
     string to;
-    double duration;
+    double distance;
     string aircraft;
     long int passangers;
 
 public:
     flight();
-    flight(ofstream &outfile);
-    flight(ifstream &file);
-    void display();
     double getSpeed();
     string getAircraft();
     string getFrom();
     double getDistance();
+
+    bool operator==(flight anotherFlight);
+
+    friend ostream &operator<<(ostream &stream, const flight &aflight);
+    friend istream &operator>>(istream &stream, flight &aflight);
+    friend ofstream &operator<<(ofstream &stream, const flight &aflight);
+    friend ifstream &operator>>(ifstream &stream, flight &aflight);
 };
 
 #endif

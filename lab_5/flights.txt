@@ -1,0 +1,17 @@
+2
+nubmer2
+airline2
+Moscow
+Volgograd
+3000
+3
+airclfat2
+30
+number3
+airline3
+Volgograd
+Moscow
+1000
+5
+aircraft3
+10
